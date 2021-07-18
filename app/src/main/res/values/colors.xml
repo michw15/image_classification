@@ -9,4 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLightGray">#EBEBEB</color>
+    <color name="control_background">#cc4285f4</color>
+    <color name="splash_background">#4E5A4F</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="database_background">#333533</color>
+    <color name="database_text">#C0C1C0</color>
+    <color name="menu_primary">#4E5A4F</color>
+    <color name="menu_primary_Dark">#3C463D</color>
 </resources>
