@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         imgview = findViewById(R.id.imageView2)
-        val fileName = "label.txt"
+        val fileName = "labels.txt"
         val inputString = application.assets.open(fileName).bufferedReader().use { it.readText() }
         var townList = inputString.split("\n")
 
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.switch_to_live -> {
-                val intent = Intent(this, ClassifierActivity::class.java)
+                val intent = Intent(this, CamActivity::class.java)
                 startActivity(intent)
                 finish()
                 return true

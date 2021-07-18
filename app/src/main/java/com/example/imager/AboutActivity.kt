@@ -21,7 +21,7 @@ class AboutActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.switch_to_live -> {
-                val intent = Intent(this, ClassifierActivity::class.java)
+                val intent = Intent(this, CamActivity::class.java)
                 startActivity(intent)
                 finish()
                 return true

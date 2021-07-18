@@ -46,7 +46,7 @@ class DatabaseActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.switch_to_live -> {
                 Log.d(TAG, "Switching to Live Mode")
-                val liveIntent = Intent(this, ClassifierActivity::class.java)
+                val liveIntent = Intent(this, CamActivity::class.java)
                 startActivity(liveIntent)
                 finish()
                 true
