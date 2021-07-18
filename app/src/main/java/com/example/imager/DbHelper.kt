@@ -1,8 +1,5 @@
 package com.example.imager
 
-/**
- * Created by Eric on 3/4/2018.
- */
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
