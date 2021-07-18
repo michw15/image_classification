@@ -13,5 +13,8 @@
         android:id="@+id/about"
         android:title="Info" />
 
+    <item
+        android:id="@+id/predict"
+        android:title="Wczytaj zdjęcie" />
 
 </menu>

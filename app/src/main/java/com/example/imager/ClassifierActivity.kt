@@ -11,7 +11,7 @@ import com.example.imager.env.ImageUtils
 import com.example.imager.env.Logger
 import java.util.*
 
-open class ClassifierActivity(override val desiredPreviewFrameSize: Size?) : CameraActivity(), ImageReader.OnImageAvailableListener {
+abstract class ClassifierActivity(override val desiredPreviewFrameSize: Size?) : CameraActivity(), ImageReader.OnImageAvailableListener {
     private var resultsView: ResultsView? = null
     private var rgbFrameBitmap: Bitmap? = null
     private var croppedBitmap: Bitmap? = null

@@ -38,6 +38,13 @@ class AboutActivity : AppCompatActivity() {
                 finish()
                 return true
             }
+
+            R.id.predict -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }

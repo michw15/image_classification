@@ -23,7 +23,7 @@ class DatabaseActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        getMenuInflater().inflate(R.menu.data_menu, menu)
+        menuInflater.inflate(R.menu.data_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -64,6 +64,13 @@ class DatabaseActivity : AppCompatActivity() {
                 startActivity(aboutIntent)
                 finish()
                 true
+            }
+
+            R.id.predict -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+                return true
             }
             else -> super.onOptionsItemSelected(item)
         }
