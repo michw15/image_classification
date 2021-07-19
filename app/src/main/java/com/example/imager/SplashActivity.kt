@@ -8,7 +8,7 @@ class SplashActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent = Intent(this, DatabaseActivity::class.java)
+        val intent = Intent(this, StartActivity::class.java)
         startActivity(intent)
         finish()
     }

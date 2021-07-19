@@ -5,20 +5,24 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
-class DatabaseActivity : AppCompatActivity() {
+class DatabaseActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
-    private var mFishListView: ListView? = null
+    private lateinit var mFishListView: ListView
     private var listMap: ArrayList<HashMap<String, String>>? = null
     private var mAdapter: SimpleAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.database_activity)
+        mFishListView = findViewById(R.id.list_fish)
+        mFishListView.onItemClickListener = this
         updateUI()
     }
 
@@ -28,7 +32,6 @@ class DatabaseActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        mFishListView = findViewById(R.id.list_fish) as ListView?
         val db = DbHelper(this)
         listMap = db.allFish
         mAdapter = SimpleAdapter(
@@ -38,7 +41,7 @@ class DatabaseActivity : AppCompatActivity() {
             arrayOf("line1", "line2"),
             intArrayOf(R.id.fish_name, R.id.fish_species)
         )
-        mFishListView!!.adapter = mAdapter
+        mFishListView.adapter = mAdapter
         db.close()
     }
 
@@ -78,5 +81,12 @@ class DatabaseActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "DatabaseActivity"
+    }
+
+    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        intent.setClass(this,FishDetailActivity::class.java)
+        intent.putExtra("position",p2)
+        intent.putExtra("id",p3)
+        startActivity(intent)
     }
 }

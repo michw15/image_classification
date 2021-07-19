@@ -45,6 +45,12 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/DatabaseTheme"/>
+        <activity
+            android:name=".StartActivity"
+            android:theme="@style/DatabaseTheme"/>
+        <activity
+            android:name=".FishDetailActivity"
+            android:theme="@style/DatabaseTheme"/>
     </application>
 
 </manifest>
