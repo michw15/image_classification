@@ -13,7 +13,7 @@ class DbHelper(context: Context?) : SQLiteAssetHelper(context, DB_NAME, null, DB
         get() {
             val list = ArrayList<HashMap<String, String>>()
             var item: HashMap<String, String>
-            val db: SQLiteDatabase = getReadableDatabase()
+            val db: SQLiteDatabase = readableDatabase
             val cursor: Cursor = db.rawQuery("SELECT * FROM FISH_LIST ORDER BY NAME", null)
             cursor.moveToFirst()
             while (!cursor.isAfterLast) {
@@ -21,6 +21,8 @@ class DbHelper(context: Context?) : SQLiteAssetHelper(context, DB_NAME, null, DB
                 Log.d(TAG, cursor.getString(0) + cursor.getString(1) + cursor.getString(2))
                 item["line1"] = cursor.getString(1)
                 item["line2"] = cursor.getString(2)
+                item["line3"] = cursor.getString(3)
+                item["line4"] = cursor.getString(4)
                 list.add(item)
                 cursor.moveToNext()
             }

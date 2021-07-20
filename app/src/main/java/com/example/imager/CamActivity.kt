@@ -1,18 +1,14 @@
 package com.example.imager
 
 import TFLiteClassifier
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.*
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.util.DisplayMetrics
-import android.util.Log
-import android.util.Rational
-import android.util.Size
-import android.view.Surface
-import android.view.TextureView
-import android.view.ViewGroup
+import android.util.*
+import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +45,42 @@ class CamActivity : AppCompatActivity(){
             .addOnSuccessListener { }
             .addOnFailureListener { e -> Log.e(TAG, "Error in setting up the classifier.", e) }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.data_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.switch_to_live -> {
+                val liveIntent = Intent(this, CamActivity::class.java)
+                startActivity(liveIntent)
+                finish()
+                true
+            }
+            R.id.database -> {
+                val databaseIntent = Intent(this, DatabaseActivity::class.java)
+                startActivity(databaseIntent)
+                finish()
+                true
+            }
+            R.id.about -> {
+                val aboutIntent = Intent(this, AboutActivity::class.java)
+                startActivity(aboutIntent)
+                finish()
+                true
+            }
+
+            R.id.predict -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun startCamera() {
@@ -101,7 +133,7 @@ class CamActivity : AppCompatActivity(){
         CameraX.bindToLifecycle(this, preview, analyzerUseCase)
     }
 
-    fun ImageProxy.toBitmap(): Bitmap {
+    private fun ImageProxy.toBitmap(): Bitmap {
         val yBuffer = planes[0].buffer // Y
         val uBuffer = planes[1].buffer // U
         val vBuffer = planes[2].buffer // V
