@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/switch_to_live"
-        android:title="Live Mode" />
+        android:title="Tryb live" />
 
     <item
         android:id="@+id/database"
-        android:title="Baza danych" />
+        android:title="Baza ryb" />
 
     <item
         android:id="@+id/about"
@@ -15,6 +15,6 @@
 
     <item
         android:id="@+id/predict"
-        android:title="Wczytaj zdjęcie" />
+        android:title="Rozpoznaj" />
 
 </menu>
