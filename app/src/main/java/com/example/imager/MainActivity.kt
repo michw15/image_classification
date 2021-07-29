@@ -12,7 +12,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.imager.ml.MobilenetV110224Quant
+import com.example.imager.ml.ConvertedModel
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -49,13 +49,15 @@ class MainActivity : AppCompatActivity() {
 
             var resized: Bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
 
-            val model = MobilenetV110224Quant.newInstance(this)
+            val model = ConvertedModel.newInstance(this)
 
             // Creates inputs for reference.
             val inputFeature0 =
-                TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.UINT8)
+                TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
 
-            var tbuffer = TensorImage.fromBitmap(resized)
+            var ti = TensorImage(DataType.FLOAT32)
+            ti.load(resized)
+            var tbuffer = ti
             var byteBuffer = tbuffer.buffer
 
             inputFeature0.loadBuffer(byteBuffer)
@@ -84,12 +86,12 @@ class MainActivity : AppCompatActivity() {
         bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
     }
 
-    fun getMAx(arr:FloatArray) : Int{
+    private fun getMAx(arr:FloatArray) : Int{
 
         var ind = 0
         var min = 0.0f
 
-        for (i in 0..1000)
+        for (i in 0..9)
         {
             if (arr[i]>min)
             {

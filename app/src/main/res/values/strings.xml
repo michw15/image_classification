@@ -3,6 +3,6 @@
     <string name="description_info">Info</string>
     <string name="request_permission">Wymaga pozwolenia na aparat.</string>
     <string name="camera_error">Urządzenie nie wspiera Camera2 API.</string>
-    <string name="about_page_description">FishID to aplikacja do klasyfikacji obrazów zbudowana przy użyciu TensorFlow. Wykorzystuje uczenie transferu z modelu rozpoznawania obrazów Google Inception-v3 do klasyfikowania popularnych gatunków ryb słodkowodnych w Ameryce Północnej. Aplikacja jest nadal we wczesnym stanie, ale powinna być w stanie rozpoznać dowolny gatunek ryb w widoku bazy danych z rozsądną dokładnością.</string>
+    <string name="about_page_description">Klasyfikacja ryb to aplikacja do klasyfikacji obrazów zbudowana przy użyciu TensorFlow. Wykorzystuje uczenie transferu z modelu rozpoznawania obrazów do klasyfikowania popularnych gatunków ryb. Aplikacja jest nadal we wczesnym stanie, ale powinna być w stanie rozpoznać dowolny gatunek ryb w widoku bazy danych z rozsądną dokładnością.</string>
     <string name="about_page_instructions">Aby zidentyfikować rybę, wybierz Live ID Mode z ustawień na pasku menu i skieruj aparat na to, co chcesz zidentyfikować.</string>
 </resources>

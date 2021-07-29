@@ -50,7 +50,7 @@ class TFLiteClassifier(private val context: Context) {
 
 
         val assetManager = context.assets
-        val model = loadModelFile(assetManager, "mobilenet_v1_1.0_224_quant.tflite")
+        val model = loadModelFile(assetManager, "converted_model.tflite")
 
         labels = loadLines(context, "labels.txt")
         val options = Interpreter.Options()
