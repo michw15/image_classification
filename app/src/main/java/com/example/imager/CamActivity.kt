@@ -1,6 +1,5 @@
 package com.example.imager
 
-import TFLiteClassifier
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.*
@@ -119,15 +118,14 @@ class CamActivity : AppCompatActivity(){
 
         val analyzerUseCase = ImageAnalysis(analyzerConfig)
         analyzerUseCase.analyzer =
-            ImageAnalysis.Analyzer { image: ImageProxy, rotationDegrees: Int ->
+            ImageAnalysis.Analyzer { image: ImageProxy, _: Int ->
 
                 val bitmap = image.toBitmap()
                 val predicted : TextView = findViewById(R.id.predictedTextView)
 
                 tfLiteClassifier
                     .classifyAsync(bitmap)
-                    .addOnSuccessListener { resultText -> predicted?.text = resultText }
-                    .addOnFailureListener { error ->  }
+                    .addOnSuccessListener { resultText -> predicted.text = resultText }
 
             }
         CameraX.bindToLifecycle(this, preview, analyzerUseCase)

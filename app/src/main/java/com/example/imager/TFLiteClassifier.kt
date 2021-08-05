@@ -1,6 +1,7 @@
+package com.example.imager
+
 import android.content.Context
 import android.content.res.AssetManager
-import android.os.SystemClock
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks.call
@@ -21,12 +22,11 @@ import org.tensorflow.lite.Interpreter
 class TFLiteClassifier(private val context: Context) {
 
     private var interpreter: Interpreter? = null
-    var isInitialized = false
-        private set
+    private var isInitialized = false
 
     private var gpuDelegate: GpuDelegate? = null
 
-    var labels = ArrayList<String>()
+    private var labels = ArrayList<String>()
 
     private val executorService: ExecutorService = Executors.newCachedThreadPool()
 
@@ -111,13 +111,16 @@ class TFLiteClassifier(private val context: Context) {
         val byteBuffer = convertBitmapToByteBuffer(resizedImage)
 
         val output = Array(1) { FloatArray(labels.size) }
-        val startTime = SystemClock.uptimeMillis()
         interpreter?.run(byteBuffer, output)
-        val endTime = SystemClock.uptimeMillis()
 
-        var inferenceTime = endTime - startTime
-        var index = getMaxResult(output[0])
-        var result = "Prediction is ${labels[index]}\nInference Time $inferenceTime ms"
+        val index = getMaxResult(output[0])
+        val probability = output[0][index] * 100.0f
+        val probabilityString = String.format("%.1f%%", probability)
+        var result = "Nieznany obiekt"
+
+        if (probability > 60) {
+             result = "Rozpoznano : ${labels[index]} - $probabilityString"
+        }
 
         return result
     }
