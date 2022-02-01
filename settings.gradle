@@ -1,12 +1,2 @@
 rootProject.name = "imager"
 include ':app'
-
-setBinding(new Binding([gradle:this]))
-
-evaluate(new File(
-        settingsDir.parentFile,
-        'flutter_screen_module/.android/include_flutter.groovy'
-))
-
-include ':flutter_screen_module'
-project(':flutter_screen_module').projectDir = new File('../flutter_screen_module')

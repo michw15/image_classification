@@ -36,13 +36,13 @@ class MainActivity : AppCompatActivity() {
 
         var select:Button = findViewById(R.id.button)
 
-        select.setOnClickListener(View.OnClickListener {
+        select.setOnClickListener {
 
-            var intent:Intent = Intent(Intent.ACTION_GET_CONTENT)
+            var intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
 
             startActivityForResult(intent, 100)
-        })
+        }
 
         var predict:Button = findViewById(R.id.button2)
         predict.setOnClickListener {
